@@ -1,0 +1,53 @@
+//Created by Mi - 14/01/2022
+//Purpose:
+	// 1.	To call on information from range of tables (parties)
+	// 2.	Break apart any parties names that are listed on the same line
+
+//INITIATE ARRAY
+var partyNames = [];
+
+//STORE PARTY INFORMATION
+const administrators = matter.administratorList
+const parents = matter.parentList
+const teachers = matter.teacherList
+const accountants = matter.accountantList
+const students = matter.studentList
+const all = matter.allList
+
+//CALL PARTY INFORMATION BASED ON SELECTED
+switch(selectedParty) {
+	case "Administrator":
+		result = administrators;
+		break;
+	case "Parent":
+		result = parents;
+		break;
+	case "Teacher":
+		result = teachers;
+		break;
+	case "Accountant":
+		result = accountants;
+		break;
+	case "Student":
+		result = students;
+		break;
+	default:
+		result = all;
+		break;
+}
+
+//SEPARATE ANY PARTIES THAT HOLD TWO NAMES
+result = result.map((item)=>{
+	var name = [];
+	const count = item.partyList.length; 															//Counts the amount of parties on the table (system maximum is 2)
+	if(count==2){
+		var name = (item.partyType==="People") ? item.legalName().split(' & ') : item.legalName();	//If more than 1 party, will display as nested array
+		}
+	else{
+		var name = item.legalName();
+	}
+	return name;																					//
+});
+
+//RETURN THE LIST OF NAMES, DISPLAYED IN ARRAY
+return partyNames.concat.apply([], partyNames);
