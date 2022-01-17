@@ -1,0 +1,24 @@
+//Created by Mi - 14/01/2022
+//PURPOSE: Display the shares the party owns in a company if their name is listed
+//This is also useful where the index number is in the middle of the object/property name
+
+var shares = '';
+
+//GRAB COMPANY LIST
+const company = matter.companyList
+
+//MAP AN ARRAY LISTING THE SHARES OF THE LISTED PERSON
+shares = company.map((obj, index, array) => {
+	for (let index=0; index <array.length; index++){          //Set up the index number
+	var personName = obj[`person${index+1}Name`];             //In this example, the object name for the first person is 'person1Name' - hence ensure to add 1 to the index 
+	var personShares = obj[`person${index+1}Shares`];
+    if(personName === nameListedOnDocument){
+		return personShares + ' shares'
+	} else {
+		return ''
+		}
+	}
+});         
+
+//RETURN A STRING VALUE
+return shares.toString();                                 //RETURNS e.g. 1/4 shares
