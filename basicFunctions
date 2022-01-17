@@ -1,0 +1,48 @@
+// BASIC CALCS
+// Created by Mi - 2021
+
+//MULTI-SELECT CHECKBOXES (USE MAP ARRAY)
+    return checkbox.map(item => item.Value).includes("1")
+
+//REPLACE FIELDS - INCL IF REPLACE MORE THAN ONE FIELD
+    var field = signature;
+    var removeSealed = field.replace(/SIGNED, SEALED & DELIVERED by/g, "Signed"+"\r"+"\r");
+    return removeSealed
+// remember to put square brackets around the ()
+
+//CHANGE NUMBER TO STRING
+    Number(whateverCurrencyStringYouWantToConvert.replace(/[^0-9.-]+/g, ""))
+
+//CHANGE US DATE AND TIME TO UK DATE AND TIME
+    // parse UK-style date string into Date object by splitting the string by forwardslashes
+    let today = new Date(currentDate.split('/')[2], currentDate.split('/')[1] - 1, currentDate.split('/')[0]);
+
+    // ADDING DAYS TO DATE
+    today.setDate(today.getDate() + 7);
+    // ADDING MONTHS TO MONTH
+    today.setMonth(today.getMonth()+6);
+
+    // convert date to a string (dd/mm/YYYY) and return the result
+    return (today.getDate()) + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+//CALCULATE WEEKDAY OF TODAY
+    var date = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    var day = weekday[date.getDay()];
+
+    return day
+
+//RETURN WEEKDAY FROM THE FORMATTED LONG DATE
+
+    var splitDate = longFormatDate.split(" ")[0] 	//grab the weekday
+    var weekday = splitDate.replace(',','')			//removed comma at the end
+
+    return weekday;
